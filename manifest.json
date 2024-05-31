@@ -9,7 +9,7 @@
   },
   "connectors": {
     "iframe": {
-      "url": "https://yourusername.github.io/trello-power-up/connector.html"
+      "url": "https://github.com/magicmoam/trello_txt_card/blob/main/connector.html"
     }
   },
   "board-buttons": {
