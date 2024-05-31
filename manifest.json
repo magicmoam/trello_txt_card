@@ -5,7 +5,7 @@
   "author": "Your Name",
   "capabilities": ["board-buttons", "card-buttons", "show-settings"],
   "icon": {
-    "url": "https://your-icon-url.com/icon.png"
+    "url": "https://github.com/magicmoam/trello_txt_card/blob/main/icons8-collectibles-48.png"
   },
   "connectors": {
     "iframe": {
