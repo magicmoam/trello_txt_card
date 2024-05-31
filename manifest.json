@@ -9,9 +9,14 @@
   },
   "connectors": {
     "iframe": {
-      "url": "https://magicmoam.github.io/trello_txt_card/"
+      "url": "https://yourusername.github.io/trello-power-up/connector.html"
+    }
+  },
+  "board-buttons": {
+    "popup": {
+      "url": "https://yourusername.github.io/trello-power-up/popup.html",
+      "height": 184
     }
   }
 }
-
 
