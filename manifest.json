@@ -1,8 +1,8 @@
 {
   "manifest_version": 1,
-  "name": "My Custom Power-Up",
+  "name": "JB Power up 1",
   "description": "A custom Power-Up for Trello",
-  "author": "Your Name",
+  "author": "JB",
   "capabilities": ["board-buttons", "card-buttons", "show-settings"],
   "icon": {
     "url": "https://github.com/magicmoam/trello_txt_card/blob/main/icons8-collectibles-48.png"
