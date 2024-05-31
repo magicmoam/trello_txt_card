@@ -6,9 +6,56 @@
   <script>
     var t = TrelloPowerUp.iframe();
 
-    // You can add event listeners or initialization code here
+    // Function to process the input text and create cards
+    function processTextAndCreateCards(text) {
+      // Split the text into lines
+      const lines = text.split('\n');
+      let currentTitle = '';
+      let currentDescription = '';
+
+      lines.forEach(line => {
+        if (line.startsWith('::')) {
+          // Create the previous card if it exists
+          if (currentTitle) {
+            createCard(currentTitle, currentDescription);
+            currentDescription = '';
+          }
+          // Set the new title
+          currentTitle = line.substring(2).trim();
+        } else if (line.startsWith('--')) {
+          // Set the new description
+          currentDescription = line.substring(2).trim();
+        }
+      });
+
+      // Create the last card if any
+      if (currentTitle) {
+        createCard(currentTitle, currentDescription);
+      }
+    }
+
+    // Function to create a card in Trello
+    function createCard(title, description) {
+      t.card('all')
+        .then(function(card) {
+          return t.board('all');
+        })
+        .then(function(board) {
+          return t.cards.create({
+            name: title,
+            desc: description,
+            pos: 'bottom',
+            idList: board.idLists[0] // Assuming you want to add to the first list
+          });
+        });
+    }
+
     t.render(function(){
       // Do something when your Power-Up is rendered
+      document.getElementById('create-cards-btn').addEventListener('click', function() {
+        const text = document.getElementById('text-input').value;
+        processTextAndCreateCards(text);
+      });
     });
 
     // Example function to show a popup
@@ -16,10 +63,10 @@
       'board-buttons': function(t, options){
         return [{
           icon: 'https://your-icon-url.com/icon.png',
-          text: 'Click Me',
+          text: 'Create Cards',
           callback: function(t){
             return t.popup({
-              title: "My Popup",
+              title: "Enter Text",
               url: 'popup.html',
               height: 184
             });
@@ -31,5 +78,7 @@
 </head>
 <body>
   <h1>Welcome to My Trello Power-Up!</h1>
+  <textarea id="text-input" rows="10" cols="30"></textarea><br>
+  <button id="create-cards-btn">Create Cards</button>
 </body>
 </html>
