@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Trello Power-Up Connector</title>
+  <script src="https://p.trellocdn.com/power-up.min.js"></script>
+  <script>
+    var t = TrelloPowerUp.iframe();
+
+    // You can add event listeners or initialization code here
+    t.render(function(){
+      // Do something when your Power-Up is rendered
+    });
+
+    // Example function to show a popup
+    TrelloPowerUp.initialize({
+      'board-buttons': function(t, options){
+        return [{
+          icon: 'https://your-icon-url.com/icon.png',
+          text: 'Click Me',
+          callback: function(t){
+            return t.popup({
+              title: "My Popup",
+              url: 'popup.html',
+              height: 184
+            });
+          }
+        }];
+      }
+    });
+  </script>
+</head>
+<body>
+  <h1>Welcome to My Trello Power-Up!</h1>
+</body>
+</html>
