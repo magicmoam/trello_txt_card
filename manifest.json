@@ -5,7 +5,7 @@
   "author": "JB",
   "capabilities": ["board-buttons", "card-buttons", "show-settings"],
   "icon": {
-    "url": "https://github.com/magicmoam/trello_txt_card/blob/main/icons8-collectibles-48.png"
+    "url": "https://raw.githubusercontent.com/magicmoam/trello_txt_card/main/icon.png"
   },
   "connectors": {
     "iframe": {
