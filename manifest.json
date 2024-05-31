@@ -5,18 +5,22 @@
   "author": "JB",
   "capabilities": ["board-buttons", "card-buttons", "show-settings"],
   "icon": {
-    "url": "https://raw.githubusercontent.com/magicmoam/trello_txt_card/main/icon.png"
+    "url": "https://magicmoam.github.io/trello_txt_card/icons8-collectibles-48.png"
   },
   "connectors": {
     "iframe": {
-      "url": "https://raw.githubusercontent.com/magicmoam/trello_txt_card/main/connector.html"
+      "url": "https://magicmoam.github.io/trello_txt_card/connector.html"
     }
   },
-  "board-buttons": {
-    "popup": {
-      "url": "https://raw.githubusercontent.com/magicmoam/trello_txt_card/main/popup.html",
-      "height": 184
+  "board-buttons": [
+    {
+      "icon": "https://magicmoam.github.io/trello_txt_card/icon.png",
+      "text": "Create Cards",
+      "callback": {
+        "url": "https://magicmoam.github.io/trello_txt_card/popup.html",
+        "height": 184
+      }
     }
-  }
+  ]
 }
 
