@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Enter Text</title>
+  <script src="https://p.trellocdn.com/power-up.min.js"></script>
+  <script>
+    var t = TrelloPowerUp.iframe();
+
+    function processTextAndCreateCards(text) {
+      const lines = text.split('\n');
+      let currentTitle = '';
+      let currentDescription = '';
+
+      lines.forEach(line => {
+        if (line.startsWith('::')) {
+          if (currentTitle) {
+            createCard(currentTitle, currentDescription);
+            currentDescription = '';
+          }
+          currentTitle = line.substring(2).trim();
+        } else if (line.startsWith('--')) {
+          currentDescription = line.substring(2).trim();
+        }
+      });
+
+      if (currentTitle) {
+        createCard(currentTitle, currentDescription);
+      }
+    }
+
+    function createCard(title, description) {
+      t.board('all')
+        .then(function(board) {
+          return t.cards.create({
+            name: title,
+            desc: description,
+            pos: 'bottom',
+            idList: board.idLists[0]
+          });
+        });
+    }
+
+    t.render(function(){
+      document.getElementById('create-cards-btn').addEventListener('click', function() {
+        const text = document.getElementById('text-input').value;
+        processTextAndCreateCards(text);
+        t.closePopup();
+      });
+    });
+  </script>
+</head>
+<body>
+  <h1>Enter Text</h1>
+  <textarea id="text-input" rows="10" cols="30"></textarea><br>
+  <button id="create-cards-btn">Create Cards</button>
+</body>
+</html>
