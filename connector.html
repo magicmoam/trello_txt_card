@@ -8,27 +8,22 @@
 
     // Function to process the input text and create cards
     function processTextAndCreateCards(text) {
-      // Split the text into lines
       const lines = text.split('\n');
       let currentTitle = '';
       let currentDescription = '';
 
       lines.forEach(line => {
         if (line.startsWith('::')) {
-          // Create the previous card if it exists
           if (currentTitle) {
             createCard(currentTitle, currentDescription);
             currentDescription = '';
           }
-          // Set the new title
           currentTitle = line.substring(2).trim();
         } else if (line.startsWith('--')) {
-          // Set the new description
           currentDescription = line.substring(2).trim();
         }
       });
 
-      // Create the last card if any
       if (currentTitle) {
         createCard(currentTitle, currentDescription);
       }
@@ -36,38 +31,33 @@
 
     // Function to create a card in Trello
     function createCard(title, description) {
-      t.card('all')
-        .then(function(card) {
-          return t.board('all');
-        })
+      t.board('all')
         .then(function(board) {
           return t.cards.create({
             name: title,
             desc: description,
             pos: 'bottom',
-            idList: board.idLists[0] // Assuming you want to add to the first list
+            idList: board.idLists[0]
           });
         });
     }
 
     t.render(function(){
-      // Do something when your Power-Up is rendered
       document.getElementById('create-cards-btn').addEventListener('click', function() {
         const text = document.getElementById('text-input').value;
         processTextAndCreateCards(text);
       });
     });
 
-    // Example function to show a popup
     TrelloPowerUp.initialize({
       'board-buttons': function(t, options){
         return [{
-          icon: 'https://your-icon-url.com/icon.png',
+          icon: 'https://raw.githubusercontent.com/magicmoam/trello_txt_card/main/icons8-collectibles-48.png',
           text: 'Create Cards',
           callback: function(t){
             return t.popup({
               title: "Enter Text",
-              url: 'popup.html',
+              url: 'https://raw.githubusercontent.com/magicmoam/trello_txt_card/main/popup.html',
               height: 184
             });
           }
