@@ -1,0 +1,17 @@
+{
+  "manifest_version": 1,
+  "name": "My Custom Power-Up",
+  "description": "A custom Power-Up for Trello",
+  "author": "Your Name",
+  "capabilities": ["board-buttons", "card-buttons", "show-settings"],
+  "icon": {
+    "url": "https://your-icon-url.com/icon.png"
+  },
+  "connectors": {
+    "iframe": {
+      "url": "https://magicmoam.github.io/trello_txt_card/"
+    }
+  }
+}
+
+
