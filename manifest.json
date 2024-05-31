@@ -9,12 +9,12 @@
   },
   "connectors": {
     "iframe": {
-      "url": "https://github.com/magicmoam/trello_txt_card/blob/main/connector.html"
+      "url": "https://raw.githubusercontent.com/magicmoam/trello_txt_card/main/connector.html"
     }
   },
   "board-buttons": {
     "popup": {
-      "url": "https://github.com/magicmoam/trello_txt_card/blob/main/popup.html",
+      "url": "https://raw.githubusercontent.com/magicmoam/trello_txt_card/main/popup.html",
       "height": 184
     }
   }
